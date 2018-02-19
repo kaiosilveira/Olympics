@@ -1,0 +1,44 @@
+﻿<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <h2>Adicionar ao quadro de medalhas</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="country-name">Nome do país</label>
+            <input type="text" class="form-control" id="country-name" placeholder="Nome do país" ng-model="addCountryCtrl.country.Name">
+        </div>
+
+        <div class="form-group">
+            <label for="gold-medals">Medalhas de ouro</label>
+            <input type="number" min="0" max="10000" id="gold-medals" class="form-control" placeholder="Número de medalhas de ouro" ng-model="addCountryCtrl.country.GoldMedals"/>
+        </div>
+
+        <div class="form-group">
+            <label for="silver-medals">Medalhas de prata</label>
+            <input type="number" min="0" max="10000" id="silver-medals" class="form-control" placeholder="Número de medalhas de prata" ng-model="addCountryCtrl.country.SilverMedals"/>
+        </div>
+
+        <div class="form-group">
+            <label for="bronze-medals">Medalhas de bronze</label>
+            <input type="number" min="0" id="bronze-medals" max="10000" class="form-control" placeholder="Número de medalhas de bronze" ng-model="addCountryCtrl.country.BronzeMedals"/>
+        </div>
+
+        <div class="btn-group">
+
+            <a class="btn btn-default" ng-click="addCountryCtrl.cancel()">
+                <span class="glyphicon glyphicon-ban-circle"></span>
+                &ensp;
+                Cancelar
+            </a>
+
+            <a class="btn btn-success" ng-click="addCountryCtrl.save()">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                &ensp;
+                Salvar
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

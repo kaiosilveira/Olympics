@@ -1,0 +1,43 @@
+﻿<div>
+
+
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h1>Quadro de medalhas</h1>
+        <a class="btn btn-primary" ng-click="countryCtrl.add()">
+            <span class="glyphicon glyphicon-plus"></span> &ensp; Adicionar
+        </a>
+    </div>
+
+    <div class="country-box" ng-repeat="country in countryCtrl.countries">
+        <div style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+            <div></div>
+            <p class="country-name">
+                {{country.Name}}
+            </p>
+            <div style="float: right;">
+                <a class="btn btn-default" ng-click="countryCtrl.edit(country.Id)"> 
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a class="btn btn-danger" ng-click="countryCtrl.remove(country.Id)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="medals-wrapper">
+            <div class="medal-box">
+                <p class="medal-type">Ouro</p>
+                <p class="medal-amount">{{country.GoldMedals}}</p>
+            </div>
+            <div class="medal-box">
+                <p class="medal-type">Prata</p>
+                <p class="medal-amount">{{country.SilverMedals}}</p>
+            </div>
+            <div class="medal-box">
+                <p class="medal-type">Bronze</p>
+                <p class="medal-amount">{{country.BronzeMedals}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
