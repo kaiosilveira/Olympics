@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olympics.DataAccess", "Olym
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olympics.Tests", "Olympics.Tests\Olympics.Tests.csproj", "{E647F6D8-01BF-4BB8-9F37-4FB0DCA6CF89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olympics.NetFramework", "Olympics.NetFramework\Olympics.NetFramework.csproj", "{7D758ABE-9251-442E-8AC7-A8C030175412}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E647F6D8-01BF-4BB8-9F37-4FB0DCA6CF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E647F6D8-01BF-4BB8-9F37-4FB0DCA6CF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E647F6D8-01BF-4BB8-9F37-4FB0DCA6CF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D758ABE-9251-442E-8AC7-A8C030175412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D758ABE-9251-442E-8AC7-A8C030175412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D758ABE-9251-442E-8AC7-A8C030175412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D758ABE-9251-442E-8AC7-A8C030175412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

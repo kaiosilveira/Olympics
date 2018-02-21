@@ -58,9 +58,7 @@
         function save(country) {
             var deferred = $q.defer();
             var promise = deferred.promise;
-
-            country.Id = parseInt(Math.random(999) * 100);
-
+            
             $http.post('/api/Countries/', country).then(
                 function (result) {
                     deferred.resolve(result.data);

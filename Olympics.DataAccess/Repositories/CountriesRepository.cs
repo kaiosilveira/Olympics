@@ -1,12 +1,17 @@
-﻿using Olympics.Domain.Contracts.Interfaces;
+﻿using Olympics.DataAccess.Factories;
+using Olympics.Domain.Contracts.Enumerators;
+using Olympics.Domain.Contracts.Interfaces;
 using Olympics.Domain.Entities;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using Dapper;
+using System;
+using Olympics.DataAccess.Repositories.Abstractions;
 
 namespace Olympics.DataAccess.Repositories
-{
-
-    public class CountriesRepository : ICountriesRepository
+{ 
+    public class CountriesRepository : Repository, ICountriesRepository
     {
         public static List<Country> MockedCountryList = new List<Country>()
         {
@@ -15,37 +20,72 @@ namespace Olympics.DataAccess.Repositories
             new Country() { Id  = 3, Name = "EUA", GoldMedals = 45, SilverMedals = 87, BronzeMedals = 132 },
         };
 
-        public int Delete(int id)
-        {
-            var idx = MockedCountryList.FindIndex(c => c.Id == id);
-            MockedCountryList.RemoveAt(idx);
-            return 1;
-        }
-
         public Country Get(int id)
         {
-            return MockedCountryList.FirstOrDefault(country => country.Id == id);
+            string query = "SELECT * FROM Country WHERE Id = @Id";
+            var parameters = new { Id = id };
+            return base.QuerySingle<Country>(query, parameters);
         }
 
         public IEnumerable<Country> List()
         {
-            return MockedCountryList;
+            string sql = "SELECT * FROM Country";
+            return base.Query<Country>(sql);
+        }
+
+        public int Delete(int id)
+        {
+            string query = @"
+                DELETE FROM Country WHERE Id = @Id
+                SELECT @@ROWCOUNT";
+
+            return base.QuerySingle<int>(query, new { Id = id });
         }
 
         public int Update(Country country)
         {
-            var c = MockedCountryList.Find(ctr => ctr.Id == country.Id);
-            c.Name = country.Name;
-            c.GoldMedals = country.GoldMedals;
-            c.SilverMedals = country.SilverMedals;
-            c.BronzeMedals = country.BronzeMedals;
-            return 1;
+            string query = @"
+                UPDATE Country
+                SET 
+                    Name = @Name,
+                    GoldMedals = @GoldMedals,
+                    SilverMedals = @SilverMedals,
+                    BronzeMedals = @BronzeMedals
+                WHERE Id = @Id
+                
+                SELECT @@ROWCOUNT
+            ";
+
+            var parameters = new
+            {
+                Id = country.Id,
+                Name = country.Name,
+                GoldMedals = country.GoldMedals,
+                SilverMedals = country.SilverMedals,
+                BronzeMedals = country.BronzeMedals,
+            };
+
+            return base.QuerySingle<int>(query, parameters);
+
         }
 
         public int Create(Country country)
         {
-            MockedCountryList.Add(country);
-            return 1;
+            string query = @"
+                INSERT INTO Country(Name, GoldMedals, SilverMedals, BronzeMedals) 
+                VALUES(@Name, @GoldMedals, @SilverMedals, @BronzeMedals)
+                SELECT @@ROWCOUNT
+            ";
+
+            var parameters = new
+            {
+                Name = country.Name,
+                GoldMedals = country.GoldMedals,
+                SilverMedals = country.SilverMedals,
+                BronzeMedals = country.BronzeMedals
+            };
+
+            return base.QuerySingle<int>(query, parameters);
         }
     }
 }
