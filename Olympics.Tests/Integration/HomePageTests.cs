@@ -13,7 +13,7 @@ namespace Olympics.Tests.Integration
     public class HomePageTests
     {
         [Fact]
-        public void Ble()
+        public void ICanManipulateCountriesMedals()
         {
             IWebDriver driver = new ChromeDriver(@"C:\Users\Kaio Silveira\documents\visual studio 2015\Projects\Olympics\Olympics.Tests\");
             
