@@ -3,7 +3,7 @@
 
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <h1>Quadro de medalhas</h1>
-        <a class="btn btn-primary" ng-click="countryCtrl.add()">
+        <a class="btn btn-primary btn-add" ng-click="countryCtrl.add()">
             <span class="glyphicon glyphicon-plus"></span> &ensp; Adicionar
         </a>
     </div>
@@ -27,15 +27,15 @@
         <div class="medals-wrapper">
             <div class="medal-box">
                 <p class="medal-type">Ouro</p>
-                <p class="medal-amount">{{country.GoldMedals}}</p>
+                <p class="medal-amount gold-amount">{{country.GoldMedals}}</p>
             </div>
             <div class="medal-box">
                 <p class="medal-type">Prata</p>
-                <p class="medal-amount">{{country.SilverMedals}}</p>
+                <p class="medal-amount silver-amount">{{country.SilverMedals}}</p>
             </div>
             <div class="medal-box">
                 <p class="medal-type">Bronze</p>
-                <p class="medal-amount">{{country.BronzeMedals}}</p>
+                <p class="medal-amount bronze-amount">{{country.BronzeMedals}}</p>
             </div>
         </div>
     </div>
